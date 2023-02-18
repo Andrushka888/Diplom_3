@@ -1,6 +1,9 @@
 package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class MainPageStellarBurgers {
 
@@ -8,19 +11,24 @@ public class MainPageStellarBurgers {
     // Локатор до кнопки "Личный кабинет" в хедере
     private By lkButtonInHeader = By.xpath(".//p[text()='Личный Кабинет']");
     // Локатор до кнопки "Войти в аккаунт" на основной странице (Это так же кнопка "Оформить заказ" если пользователь зарегистрирован)
-    private By authorizationOrOrderButtonOnMainPage = By.className("button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg");
-    // Локатор до кнопки "Конструктор"
-    private By constructorButtonInHeader = By.xpath(".//p[text()='Конструктор']");
-    //Локатор до кнопки логотипа сайта
-    private By logoButton = By.className("AppHeader_header__logo__2D0X2");
-    // Локатор до кнопки "Выход"
-    private By exitLKButtonIn = By.className("Account_button__14Yp3 text text_type_main-medium text_color_inactive");
+    private By authorizationOrOrderButtonOnMainPage = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']");
     // Локатор до вкладки "Булки"
-    private By bunTub = By.xpath(".//p[text()='Булки']");
+    private By bunTub = By.xpath(".//span[text()='Булки']");
+    // Локатор до текста из заголовка "Булки"
+    private By bunHeaderText = By.xpath(".//h2[text()='Булки']");
+
     // Локатор до вкладки "Соусы"
-    private By sauceTub = By.xpath(".//p[text()='Соусы']");
-    // Локатор до вкладки "Добавки"
-    private By toppingsTub = By.xpath(".//p[text()='Начинки']");
+    private By sauceTub = By.xpath(".//span[text()='Соусы']");
+    // Локатор до текста из заголовка "Соусы"
+    private By sauceHeaderText = By.xpath(".//h2[text()='Соусы']");
+    // Локатор до вкладки "Начинки"
+    private By toppingsTub = By.xpath(".//span[text()='Начинки']");
+    // Локатор до текста из заголовка "Начинки"
+    private By toppingsHeaderText = By.xpath(".//h2[text()='Начинки']");
+    // Локатор до кнопки "Оформить заказ"
+    private By buttonCreateOrder = By.xpath(".//button[text()='Оформить заказ']");
+    // Локатор до текста "Соберите бургер"
+    private By textCreateBurger = By.xpath(".//h1[text()='Соберите бургер']");
 
     public MainPageStellarBurgers(WebDriver driver) {
         this.driver = driver;
@@ -30,7 +38,52 @@ public class MainPageStellarBurgers {
     public void clickLkButtonInHeader() {
         driver.findElement(lkButtonInHeader).click();
     }
+    // Метод для нажатия на кнопку "Личный кабинет" на основной странице
+    public void clickLkButtonInMainPage() {
+        driver.findElement(authorizationOrOrderButtonOnMainPage).click();
+    }
+    // Метод для получения текста из кнопки "Оформить заказ"
+    public String getTextFromButtonCreateOrder() {
+        new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return driver.findElement(buttonCreateOrder).getText();
+    }
+    // Метод для получения текста "Соберите бургер" из конструктора
+    public String getTextCreateBurgerFromConstructor() {
+        new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return driver.findElement(textCreateBurger).getText();
+    }
+    //Метод нажатия на вкладку "Булки"
+    public void clickTubBunInHeader() {
+        driver.findElement(bunTub).click();
+    }
+    // Метод для получения текста "Булки" из заголовка вкладки ""Булки
+    public String getTextBunHeader() {
+        new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return driver.findElement(bunHeaderText).getText();
+    }
+    //Метод нажатия на вкладку "Соусы"
+    public void clickTubSauceInHeader() {
+        driver.findElement(sauceTub).click();
+    }
+    // Метод для получения текста "Соусы" из заголовка вкладки "Соусы"
+    public String getTextSauceHeader() {
+        new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return driver.findElement(sauceHeaderText).getText();
+    }
 
-
+    //Метод нажатия на вкладку "Начинки"
+    public void clickTubToppingsInHeader() {
+        driver.findElement(toppingsTub).click();
+    }
+    // Метод для получения текста "Соусы" из заголовка вкладки "Начинки"
+    public String getTextToppingsHeader() {
+        new WebDriverWait(driver, 3);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        return driver.findElement(toppingsHeaderText).getText();
+    }
 
 }

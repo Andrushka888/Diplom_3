@@ -13,6 +13,10 @@ public class PasswordRecoverPageStellarBurgers {
     public PasswordRecoverPageStellarBurgers(WebDriver driver) {
         this.driver = driver;
     }
+
+    public void clickButtonEnterInFooterInPasswordRecoverPage() {
+        driver.findElement(enterButtonInRecoverPage).click();
+    }
 }
 
 
