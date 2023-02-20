@@ -1,12 +1,10 @@
 package org.example;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
-
-public class MainPageStellarBurgers {
-
+public class MainPage {
     private WebDriver driver;
     // Локатор до кнопки "Личный кабинет" в хедере
     private By lkButtonInHeader = By.xpath(".//p[text()='Личный Кабинет']");
@@ -16,7 +14,6 @@ public class MainPageStellarBurgers {
     private By bunTub = By.xpath(".//span[text()='Булки']");
     // Локатор до текста из заголовка "Булки"
     private By bunHeaderText = By.xpath(".//h2[text()='Булки']");
-
     // Локатор до вкладки "Соусы"
     private By sauceTub = By.xpath(".//span[text()='Соусы']");
     // Локатор до текста из заголовка "Соусы"
@@ -29,61 +26,57 @@ public class MainPageStellarBurgers {
     private By buttonCreateOrder = By.xpath(".//button[text()='Оформить заказ']");
     // Локатор до текста "Соберите бургер"
     private By textCreateBurger = By.xpath(".//h1[text()='Соберите бургер']");
-
-    public MainPageStellarBurgers(WebDriver driver) {
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    // Метод для нажатия на кнопку "Личный кабинет" в хедере
+    @Step("Метод для нажатия на кнопку 'Личный кабинет' в хедере")
     public void clickLkButtonInHeader() {
         driver.findElement(lkButtonInHeader).click();
     }
-    // Метод для нажатия на кнопку "Личный кабинет" на основной странице
+    @Step("Метод для нажатия на кнопку 'Личный кабинет' на основной странице")
     public void clickLkButtonInMainPage() {
         driver.findElement(authorizationOrOrderButtonOnMainPage).click();
     }
-    // Метод для получения текста из кнопки "Оформить заказ"
+    @Step("Метод для получения текста из кнопки 'Оформить заказ'")
     public String getTextFromButtonCreateOrder() {
         new WebDriverWait(driver, 3);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(buttonCreateOrder).getText();
     }
-    // Метод для получения текста "Соберите бургер" из конструктора
+    @Step("Метод для получения текста 'Соберите бургер' из конструктора")
     public String getTextCreateBurgerFromConstructor() {
         new WebDriverWait(driver, 3);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(textCreateBurger).getText();
     }
-    //Метод нажатия на вкладку "Булки"
+    @Step("Метод нажатия на вкладку 'Булки'")
     public void clickTubBunInHeader() {
         driver.findElement(bunTub).click();
     }
-    // Метод для получения текста "Булки" из заголовка вкладки ""Булки
+    @Step("Метод для получения текста 'Булки' из заголовка вкладки 'Булки'")
     public String getTextBunHeader() {
         new WebDriverWait(driver, 3);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(bunHeaderText).getText();
     }
-    //Метод нажатия на вкладку "Соусы"
+    @Step("Метод нажатия на вкладку 'Соусы'")
     public void clickTubSauceInHeader() {
         driver.findElement(sauceTub).click();
     }
-    // Метод для получения текста "Соусы" из заголовка вкладки "Соусы"
+    @Step("Метод для получения текста 'Соусы' из заголовка вкладки 'Соусы'")
     public String getTextSauceHeader() {
         new WebDriverWait(driver, 3);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(sauceHeaderText).getText();
     }
-
-    //Метод нажатия на вкладку "Начинки"
+    @Step("Метод нажатия на вкладку 'Начинки'")
     public void clickTubToppingsInHeader() {
         driver.findElement(toppingsTub).click();
     }
-    // Метод для получения текста "Соусы" из заголовка вкладки "Начинки"
+    @Step("Метод для получения текста 'Соусы' из заголовка вкладки 'Начинки'")
     public String getTextToppingsHeader() {
         new WebDriverWait(driver, 3);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(toppingsHeaderText).getText();
     }
-
 }
