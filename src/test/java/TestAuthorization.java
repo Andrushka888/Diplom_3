@@ -1,8 +1,8 @@
 import io.qameta.allure.junit4.DisplayName;
-import org.example.LoginPage;
-import org.example.MainPage;
-import org.example.PasswordRecoverPage;
-import org.example.RegistrationPage;
+import authorization.LoginPage;
+import main.MainPage;
+import recover.PasswordRecoverPage;
+import registration.RegistrationPage;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;

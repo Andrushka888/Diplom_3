@@ -1,7 +1,7 @@
 import io.qameta.allure.junit4.DisplayName;
-import org.example.LoginPage;
-import org.example.MainPage;
-import org.example.RegistrationPage;
+import authorization.LoginPage;
+import main.MainPage;
+import registration.RegistrationPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

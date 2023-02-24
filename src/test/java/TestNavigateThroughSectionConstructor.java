@@ -1,5 +1,5 @@
 import io.qameta.allure.junit4.DisplayName;
-import org.example.MainPage;
+import main.MainPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
